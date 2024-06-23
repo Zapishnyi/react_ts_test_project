@@ -1,6 +1,5 @@
 import React, { ChangeEvent, FC } from "react";
 import { useForm } from "react-hook-form";
-import IGenre from "../../models/IGenre";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 import styles from "./SearchForm.module.css";
 import { SearchActions } from "../../redux/Slices/searchSlice";
@@ -8,11 +7,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import GenresBadgeSet from "../../components/GenresBadgeSet/GenresBadgeSet";
 import { PaginationAction } from "../../redux/Slices/paginationSlice";
 import MagnifyingGlassBtn from "../../components/MagnifyingGlassBtn/MagnifyingGlassBtn";
-
-interface IProps {
-  genres: IGenre[];
-  movieSearchName: string;
-}
 
 type FormType = {
   [key: string]: boolean | string;

@@ -1,10 +1,8 @@
-import IGenres from "../../models/IGenres";
 import {
   createAsyncThunk,
   createSlice,
   isPending,
   isRejected,
-  PayloadAction,
 } from "@reduxjs/toolkit";
 import { tmbdDataService } from "../../services/tmdbData.api.service";
 import { AxiosError } from "axios";

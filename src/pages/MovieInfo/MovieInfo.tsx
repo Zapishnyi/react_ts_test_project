@@ -53,7 +53,6 @@ const MovieInfo: FC = () => {
                   error_image_path={errorImage.movieImage}
                 />
               </div>
-
               <div className={styles.info}>
                 <div className={styles.backButton}></div>
                 <h1>{chosenMovie.title}</h1>

@@ -12,7 +12,7 @@ const MoviesList = () => {
   const { movies, loadingStateMovies } = useAppSelector(
     (state) => state.Movies,
   );
-  const { genres, movieSearchName, chosenGenresId, loadingStateGenres } =
+  const { movieSearchName, chosenGenresId, loadingStateGenres } =
     useAppSelector((state) => state.Search);
   const { page, total_pages } = useAppSelector((state) => state.Pagination);
 
