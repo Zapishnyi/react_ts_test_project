@@ -1,0 +1,16 @@
+.backButton {
+    fill: var(--buttons_backgrond_color);
+    width: 50px;;
+    cursor: pointer;
+    filter: drop-shadow(0 0 5px #9b9b9b);
+
+}
+
+.backButton:hover {
+    fill: var(--buttons_backgrond_color_hover);
+
+}
+
+.backButton * {
+    transition-duration: initial;
+}

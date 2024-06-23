@@ -1,0 +1,151 @@
+
+.searchForm {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 45vw;
+    height: 100%;
+    align-items: center;
+    @media (width < 800px ) {
+        width: 95%;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+    .searchField {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 5px 0;
+        @media (width < 800px ) {
+            justify-content: flex-start;
+        }
+
+        .chosenGenres {
+            @media (width < 800px ) {
+                display: none;
+            }
+        }
+
+        .searchInputButton {
+            border: 1px solid #c7c7c7;
+            border-radius: 25px;
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+            input {
+                width: 80%;
+                font-size: 20px;
+                outline: none;
+                border: none;
+                background: transparent;
+
+            }
+
+            input:focus {
+                outline: none;
+            }
+
+            .searchButton {
+
+                display: flex;
+                justify-content: flex-end;
+                cursor: pointer;
+                background: none;
+                width: 10%;
+                border: none;
+            }
+
+            svg {
+                transform: scale(1);
+                /*transition: 0.3s;*/
+            }
+
+            .searchButton:hover svg {
+                transform: scale(1.2);
+
+            }
+        }
+
+
+    }
+
+    .searchField:hover + .genresToChose {
+        opacity: 1;
+        display: flex;
+    }
+
+    .genresToChose:hover {
+        opacity: 1;
+        display: flex;
+    }
+
+    .genresToChose {
+        padding: 10px;
+        display: none;
+        opacity: 0;
+        backdrop-filter: blur(3px);
+        flex-wrap: wrap;
+        justify-content: space-between;
+        position: absolute;
+        top: 80px;
+
+        z-index: 5;
+        animation: genresPopUp 0.3s forwards ease-in;
+
+        .genreInput {
+        }
+
+        @media (width < 800px ) {
+            opacity: 1;
+            display: flex;
+        }
+
+        label {
+            cursor: pointer;
+            line-height: 15px;
+            border: 1px solid grey;
+            padding: 3px;
+            border-radius: 5px;
+            margin: 3px;
+            background: white;
+            color: black;
+            box-shadow: 0 0 5px #c7c7c7;
+            @media (width < 800px ) {
+                padding: 5px;
+                margin: 10px;
+            }
+
+            input {
+                display: none;
+            }
+        }
+
+        label:has(input:checked) {
+            color: white;
+            background: black;
+        }
+
+        .none {
+
+        }
+    }
+
+}
+
+@keyframes genresPopUp {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}

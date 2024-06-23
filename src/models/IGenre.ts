@@ -1,5 +1,4 @@
 export default interface IGenre {
-    id: number,
-    name:string,
-    chosen?:boolean,
+  id: number;
+  name: string;
 }

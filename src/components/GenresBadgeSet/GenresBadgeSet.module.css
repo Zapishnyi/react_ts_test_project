@@ -1,0 +1,20 @@
+.badgeWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    right: 0;
+    top: 5px;
+
+
+    .badge {
+        background: var(--background_color_darker);
+        font-size: calc((100vw - 375px) * 0.004695 + 10px);
+        padding: 0 10px;
+        margin: 0 3px;
+        color: var(--text_color);
+        border-radius: 15px;
+        border: 1px solid #909090;
+        box-shadow: 0 0 5px #848484;
+
+    }
+}

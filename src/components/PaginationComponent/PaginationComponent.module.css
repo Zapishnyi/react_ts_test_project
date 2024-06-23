@@ -1,0 +1,64 @@
+.paginationWrapper {
+    display: flex;
+    position: absolute;
+    width: 300px;
+    height: 60px;
+    background: var(--background_color_darker);
+
+    bottom: 20px;
+    left: calc(100vw / 2 - 150px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-radius: 30px;
+    font-size: 20px;
+    box-shadow: 0 0 15px grey;
+
+    span {
+        display: inline-block;
+        text-align: left;
+        width: 55px;
+        background: var(--background_color_darker);
+        font-family: Arial, sans-serif;
+    }
+
+    input {
+        font-family: Arial, sans-serif;
+        text-align: right;
+        font-size: 20px;
+        width: 55px;
+        border: none;
+        background: var(--background_color_darker);
+
+
+    }
+
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    button {
+        aspect-ratio: 1/1;
+        height: 50px;
+
+        background: transparent;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+
+    button:disabled * {
+        fill: #a58b8f;
+        cursor: initial;
+    }
+
+    .currentPage {
+
+    }
+}
+

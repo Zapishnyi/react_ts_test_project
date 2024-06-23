@@ -1,0 +1,30 @@
+.errorPageWrapper {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--background_color_lighter);
+    text-align: center;
+
+    h1 {
+        margin-bottom: 10vh;
+    }
+
+    a {
+        padding: 10px;
+        background: var(--buttons_backgrond_color);
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        color: var(--text_color);
+        box-shadow: 0 0 8px #939393;
+
+    }
+
+    a:hover {
+        background: var(--buttons_backgrond_color_hover);
+    }
+
+}

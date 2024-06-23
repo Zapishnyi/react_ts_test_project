@@ -1,0 +1,17 @@
+.button {
+
+    width: 50px;
+    fill: var(--buttons_backgrond_color);
+    fill-rule: evenodd;
+    cursor: pointer;
+    transition-duration: initial;
+}
+
+.button:hover {
+
+    fill: var(--buttons_backgrond_color_hover);
+}
+
+.button:disabled {
+    fill: #8e4c5c;
+}

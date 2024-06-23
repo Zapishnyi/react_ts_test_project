@@ -1,0 +1,25 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.light {
+    --background_color_darker: #ebebeb;
+    --background_color_lighter: #ffffff;
+    --contrast_element_color: #464646;
+    --text_color: #2b2b2b;
+    --buttons_backgrond_color: #9d9deb;
+    --buttons_backgrond_color_hover: #7070ab;
+
+}
+
+.dark {
+    --background_color_darker: #363636;
+    --background_color_lighter: #656565;
+    --contrast_element_color: #d4d4d4;
+    --text_color: #ebebeb;
+    --buttons_backgrond_color: #9d9deb;
+    --buttons_backgrond_color_hover: #7070ab;
+}
