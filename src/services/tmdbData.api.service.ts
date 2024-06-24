@@ -31,3 +31,5 @@ export const tmbdDataService: ITmdbDataApiService = {
       .get(tmdbDataURLS.searchMovies(searchQuery))
       .then((value) => value.data),
 };
+
+// const subscribeToWaitList = (cb: IWaitList) => {

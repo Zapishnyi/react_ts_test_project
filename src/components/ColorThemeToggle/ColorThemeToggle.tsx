@@ -7,7 +7,9 @@ import styles from "./ColorThemeToggle.module.css";
 
 const ColorThemeToggle: FC = () => {
   const { lightThemeOn } = useAppSelector((state) => state.Theme);
+
   const dispatch = useAppDispatch();
+
   const onToggle = () => {
     dispatch(setTheme(!lightThemeOn));
     localStorage.setItem("lightThemeOn", JSON.stringify(!lightThemeOn));

@@ -7,7 +7,7 @@ import {
 } from "@reduxjs/toolkit";
 import { tmbdDataService } from "../../services/tmdbData.api.service";
 import { AxiosError } from "axios";
-import { PaginationAction } from "./paginationSlice";
+import { setPaginationInfo } from "./paginationSlice";
 import { store } from "../store";
 
 interface IMoviesSlice {
@@ -27,11 +27,11 @@ const searchMoviesByGenresOnly = createAsyncThunk(
   async (getQuery: string, thunkAPI) => {
     try {
       const movies = await tmbdDataService.getAllMovies(getQuery);
-      thunkAPI.dispatch(PaginationAction.setPaginationInfo(movies));
+      thunkAPI.dispatch(setPaginationInfo(movies));
       return thunkAPI.fulfillWithValue(movies.results);
     } catch (e) {
       const error = e as AxiosError<string>;
-      return thunkAPI.rejectWithValue(error.response?.data);
+      return thunkAPI.rejectWithValue(error.response?.status);
     } finally {
       thunkAPI.dispatch(MoviesActions.setLoadingState(false));
     }
@@ -54,8 +54,7 @@ const searchMoviesByTitle = createAsyncThunk(
           ),
         ),
       });
-      thunkAPI.dispatch(PaginationAction.setPaginationInfo(movies));
-
+      thunkAPI.dispatch(setPaginationInfo(movies));
       return thunkAPI.fulfillWithValue(movies.results);
     } catch (e) {
       const error = e as AxiosError<string>;

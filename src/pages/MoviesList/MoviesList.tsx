@@ -4,33 +4,35 @@ import { MoviesActions } from "../../redux/Slices/moviesSlice";
 import MovieListCard from "../../components/MovieListCard/MovieListCard";
 import styles from "./MoviesList.module.css";
 import PaginationComponent from "../../components/PaginationComponent/PaginationComponent";
-import { PaginationAction } from "../../redux/Slices/paginationSlice";
 import { ThreeCircles } from "react-loader-spinner";
+import { setChosenPage } from "../../redux/Slices/chosenPageSlice";
 
 const MoviesList = () => {
   const dispatch = useAppDispatch();
   const { movies, loadingStateMovies } = useAppSelector(
     (state) => state.Movies,
   );
+
   const { movieSearchName, chosenGenresId, loadingStateGenres } =
     useAppSelector((state) => state.Search);
+  const { chosenPage } = useAppSelector((state) => state.ChosenPage);
   const { page, total_pages } = useAppSelector((state) => state.Pagination);
 
   const paginationAction = (pageChanged: number) => {
-    dispatch(PaginationAction.setPage(pageChanged));
+    dispatch(setChosenPage(pageChanged));
   };
 
   useEffect(() => {
     dispatch(
       movieSearchName
         ? MoviesActions.searchMoviesByTitle(
-            `?query=${movieSearchName}&page=${page}`,
+            `?query=${movieSearchName}&page=${chosenPage}`,
           )
         : MoviesActions.searchMoviesByGenresOnly(
-            `?page=${page}&with_genres=${chosenGenresId.join()}`,
+            `?page=${chosenPage}&with_genres=${chosenGenresId.join()}`,
           ),
     );
-  }, [movieSearchName, page, chosenGenresId]);
+  }, [movieSearchName, chosenPage, chosenGenresId]);
   return (
     <div className={styles.moviesListBase}>
       {loadingStateMovies || loadingStateGenres ? (

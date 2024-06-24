@@ -4,6 +4,7 @@ import { searchSlice } from "./Slices/searchSlice";
 import { paginationSlice } from "./Slices/paginationSlice";
 import { themeSlice } from "./Slices/themeSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { chosenPageSlice } from "./Slices/chosenPageSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     Search: searchSlice.reducer,
     Pagination: paginationSlice.reducer,
     Theme: themeSlice.reducer,
+    ChosenPage: chosenPageSlice.reducer,
   },
 });
 

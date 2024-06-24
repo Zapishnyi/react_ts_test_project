@@ -21,7 +21,6 @@ const Header: FC = () => {
             alt="Logo"
           />
         </Link>
-
         <SearchMenuButtonMobile />
         <SearchComponent />
         <div className={styles.themeUserContainer}>

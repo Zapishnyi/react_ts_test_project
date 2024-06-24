@@ -33,4 +33,4 @@ export const paginationSlice = createSlice({
   },
 });
 
-export const PaginationAction = paginationSlice.actions;
+export const { setPage, setPaginationInfo } = paginationSlice.actions;

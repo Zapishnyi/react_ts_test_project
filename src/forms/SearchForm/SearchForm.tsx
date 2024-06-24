@@ -5,7 +5,7 @@ import styles from "./SearchForm.module.css";
 import { SearchActions } from "../../redux/Slices/searchSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 import GenresBadgeSet from "../../components/GenresBadgeSet/GenresBadgeSet";
-import { PaginationAction } from "../../redux/Slices/paginationSlice";
+import { setPage } from "../../redux/Slices/paginationSlice";
 import MagnifyingGlassBtn from "../../components/MagnifyingGlassBtn/MagnifyingGlassBtn";
 
 type FormType = {
@@ -29,7 +29,7 @@ const SearchForm: FC = () => {
 
   const moviesSearch = (formData: FormType) => {
     dispatch(SearchActions.setMovieSearchName(formData.movieSearchName));
-    dispatch(PaginationAction.setPage(1));
+    dispatch(setPage(1));
     navigate("/movies");
   };
 
@@ -48,7 +48,6 @@ const SearchForm: FC = () => {
       .map((e) => e.id)[0];
     const chosenGenresIdUpdated = [...chosenGenresId];
     chosenGenresIdUpdated.push(chosenGenreId);
-
     dispatch(
       SearchActions.setChosenGenresId(
         chosenGenresId.includes(chosenGenreId)
@@ -56,7 +55,7 @@ const SearchForm: FC = () => {
           : chosenGenresIdUpdated,
       ),
     );
-    dispatch(PaginationAction.setPage(1));
+    dispatch(setPage(1));
     if (location.pathname !== "/movies") {
       navigate("/movies");
     }
