@@ -42,8 +42,6 @@ const MoviesList = () => {
             width="80"
             color="#9d9deb"
             ariaLabel="loading"
-            // wrapperStyle
-            // wrapperClass
           />
         </div>
       ) : (
@@ -54,7 +52,10 @@ const MoviesList = () => {
             ))
           ) : (
             <div className={styles.movieNotFoundWarning}>
-              <h3>Your search request doesn't match any movie in TMDB </h3>
+              <h3>
+                Your search request doesn't match any movie in TMDB on this
+                page.
+              </h3>
             </div>
           )}
         </div>
