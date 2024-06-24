@@ -14,9 +14,26 @@ const PaginationComponent: FC<IProps> = ({
   totalPages,
   paginationAction,
 }) => {
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    switch (true) {
+      case +e.currentTarget.value < 1:
+        paginationAction(1);
+        break;
+      case +e.currentTarget.value > totalPages:
+        paginationAction(totalPages);
+        break;
+      default:
+        paginationAction(+e.currentTarget.value);
+    }
+  };
+
   return (
     <div className={styles.paginationWrapper}>
-      <button onClick={() => paginationAction(page - 1)} disabled={page === 1}>
+      <button
+        className={styles.prev}
+        onClick={() => paginationAction(page - 1)}
+        disabled={page === 1}
+      >
         <ButtonLeft />
       </button>
       <div>
@@ -26,11 +43,12 @@ const PaginationComponent: FC<IProps> = ({
           type="number"
           min={1}
           max={totalPages}
-          onChange={(e) => paginationAction(+e.currentTarget.value)}
+          onChange={onChangeHandler}
         />{" "}
         of <span>{totalPages}</span>
       </div>
       <button
+        className={styles.next}
         onClick={() => paginationAction(page + 1)}
         disabled={page === totalPages}
       >

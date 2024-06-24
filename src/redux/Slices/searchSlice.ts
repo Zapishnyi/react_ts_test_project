@@ -7,6 +7,7 @@ import {
 import { tmbdDataService } from "../../services/tmdbData.api.service";
 import { AxiosError } from "axios";
 import IGenre from "../../models/IGenre";
+import IErrorResponse from "../../models/IErrorResponse";
 
 interface IGenresSlice {
   movieSearchName: string;
@@ -31,8 +32,8 @@ const loadGenres = createAsyncThunk(
       );
       return thunkAPI.fulfillWithValue(genres);
     } catch (e) {
-      const error = e as AxiosError<string>;
-      return thunkAPI.rejectWithValue(error.response?.data);
+      const error = e as AxiosError<IErrorResponse>;
+      return thunkAPI.rejectWithValue(error.response?.data.status_message);
     } finally {
       thunkAPI.dispatch(SearchActions.setLoadingState(false));
     }

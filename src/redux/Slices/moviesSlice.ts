@@ -9,6 +9,7 @@ import { tmbdDataService } from "../../services/tmdbData.api.service";
 import { AxiosError } from "axios";
 import { setPaginationInfo } from "./paginationSlice";
 import { store } from "../store";
+import IErrorResponse from "../../models/IErrorResponse";
 
 interface IMoviesSlice {
   movies: IMovie[];
@@ -30,8 +31,8 @@ const searchMoviesByGenresOnly = createAsyncThunk(
       thunkAPI.dispatch(setPaginationInfo(movies));
       return thunkAPI.fulfillWithValue(movies.results);
     } catch (e) {
-      const error = e as AxiosError<string>;
-      return thunkAPI.rejectWithValue(error.response?.data);
+      const error = e as AxiosError<IErrorResponse>;
+      return thunkAPI.rejectWithValue(error.response?.data.status_message);
     } finally {
       thunkAPI.dispatch(MoviesActions.setLoadingState(false));
     }
@@ -57,8 +58,9 @@ const searchMoviesByTitle = createAsyncThunk(
       thunkAPI.dispatch(setPaginationInfo(movies));
       return thunkAPI.fulfillWithValue(movies.results);
     } catch (e) {
-      const error = e as AxiosError<string>;
-      return thunkAPI.rejectWithValue(error.response?.data);
+      const error = e as AxiosError<IErrorResponse>;
+      console.log(e);
+      return thunkAPI.rejectWithValue(error.response?.data.status_message);
     } finally {
       thunkAPI.dispatch(MoviesActions.setLoadingState(false));
     }

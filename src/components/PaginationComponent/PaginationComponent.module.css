@@ -40,6 +40,12 @@
         margin: 0;
     }
 
+    .next {
+    }
+
+    .prev {
+    }
+
     button {
         aspect-ratio: 1/1;
         height: 50px;
