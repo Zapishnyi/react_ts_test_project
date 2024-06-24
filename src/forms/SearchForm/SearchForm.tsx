@@ -33,7 +33,7 @@ const SearchForm: FC = () => {
     navigate("/movies");
   };
 
-  const genreChoiceNone = (element: ChangeEvent<HTMLInputElement>) => {
+  const genreChoiceNone = () => {
     dispatch(SearchActions.setChosenGenresId([]));
     for (let item of Array.from(
       document.getElementsByClassName(styles.genreInput),

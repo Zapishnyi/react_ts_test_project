@@ -95,7 +95,7 @@ export const moviesSlice = createSlice({
       )
       .addMatcher(
         isPending(searchMoviesByGenresOnly, searchMoviesByTitle),
-        (state, action) => {
+        (state) => {
           state.loadingStateMovies = true;
         },
       );
