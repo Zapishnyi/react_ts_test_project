@@ -5,8 +5,8 @@ import styles from "./SearchForm.module.css";
 import { SearchActions } from "../../redux/Slices/searchSlice";
 import { useLocation, useNavigate } from "react-router-dom";
 import GenresBadgeSet from "../../components/GenresBadgeSet/GenresBadgeSet";
-import { setPage } from "../../redux/Slices/paginationSlice";
 import MagnifyingGlassBtn from "../../components/MagnifyingGlassBtn/MagnifyingGlassBtn";
+import { setChosenPage } from "../../redux/Slices/chosenPageSlice";
 
 type FormType = {
   [key: string]: boolean | string;
@@ -28,21 +28,28 @@ const SearchForm: FC = () => {
   });
 
   const moviesSearch = (formData: FormType) => {
+    dispatch(setChosenPage(1));
     dispatch(SearchActions.setMovieSearchName(formData.movieSearchName));
-    dispatch(setPage(1));
+
     navigate("/movies");
   };
 
   const genreChoiceNone = () => {
+    dispatch(setChosenPage(1));
     dispatch(SearchActions.setChosenGenresId([]));
     for (let item of Array.from(
       document.getElementsByClassName(styles.genreInput),
     ) as HTMLInputElement[]) {
       item.checked = false;
     }
+
+    if (location.pathname !== "/movies") {
+      navigate("/movies");
+    }
   };
 
   const genreChoiceHandler = (element: ChangeEvent<HTMLInputElement>) => {
+    dispatch(setChosenPage(1));
     const chosenGenreId = genres
       .filter((e) => e.name === element.currentTarget.name)
       .map((e) => e.id)[0];
@@ -55,7 +62,7 @@ const SearchForm: FC = () => {
           : chosenGenresIdUpdated,
       ),
     );
-    dispatch(setPage(1));
+
     if (location.pathname !== "/movies") {
       navigate("/movies");
     }

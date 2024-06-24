@@ -16,7 +16,7 @@ const MoviesList = () => {
   const { movieSearchName, chosenGenresId, loadingStateGenres } =
     useAppSelector((state) => state.Search);
   const { chosenPage } = useAppSelector((state) => state.ChosenPage);
-  const { page, total_pages } = useAppSelector((state) => state.Pagination);
+  const { total_pages } = useAppSelector((state) => state.Pagination);
 
   const paginationAction = (pageChanged: number) => {
     dispatch(setChosenPage(pageChanged));
@@ -33,6 +33,7 @@ const MoviesList = () => {
           ),
     );
   }, [movieSearchName, chosenPage, chosenGenresId]);
+
   return (
     <div className={styles.moviesListBase}>
       {loadingStateMovies || loadingStateGenres ? (
@@ -62,7 +63,7 @@ const MoviesList = () => {
       )}
 
       <PaginationComponent
-        page={page}
+        page={chosenPage}
         totalPages={total_pages}
         paginationAction={paginationAction}
       />

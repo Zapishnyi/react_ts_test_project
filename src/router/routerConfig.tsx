@@ -26,10 +26,10 @@ export const routerConfig = createBrowserRouter([
         path: "/search",
         element: <SearchPageMobile />,
       },
-      {
-        path: "*",
-        element: <ErrorPage />,
-      },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorPage />,
   },
 ]);
