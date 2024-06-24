@@ -31,7 +31,7 @@ const searchMoviesByGenresOnly = createAsyncThunk(
       return thunkAPI.fulfillWithValue(movies.results);
     } catch (e) {
       const error = e as AxiosError<string>;
-      return thunkAPI.rejectWithValue(error.response?.status);
+      return thunkAPI.rejectWithValue(error.response?.data);
     } finally {
       thunkAPI.dispatch(MoviesActions.setLoadingState(false));
     }
