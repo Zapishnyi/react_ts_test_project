@@ -22,8 +22,8 @@ const ColorThemeToggle: FC = () => {
       onToggle={onToggle}
       toggled={!lightThemeOn}
       placeholder={undefined}
-      // onPointerEnterCapture ={undefined}
-      // onPointerLeaveCapture ={undefined}
+      // onPointerEnterCapture={undefined}
+      // onPointerLeaveCapture={undefined}
     />
   );
 };
